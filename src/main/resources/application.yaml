@@ -1,11 +1,7 @@
-#spring:
-#  datasource:
-#    url: jdbc:h2:./devdb
-#    username: sa
-#  jpa:
-#    hibernate:
-#      ddl-auto: update
 spring:
+  profiles:
+    active:
+      - dev
   jpa:
     properties:
       javax:
@@ -16,3 +12,15 @@ spring:
     web:
       default-page-size: 10
       max-page-size: 100
+backend:
+  upload-path: assets
+---
+spring:
+  profiles: prod
+backend:
+  upload-path: assets-prod
+---
+spring:
+  profiles: dev
+backend:
+  upload-path: assets-dev
